@@ -3,8 +3,8 @@ docker network create myteamcity-network
 
 # install TeamCity server
 docker run --name myteamcity `
-    -v d:/teamcity/data:/data/teamcity_server/datadir `
-    -v d:/teamcity/logs:/opt/teamcity/logs `
+    -v c:/Workspace/teamcity/data:/data/teamcity_server/datadir `
+    -v c:/Workspace/teamcity/logs:/opt/teamcity/logs `
     -p 8111:8111 `
     --restart always `
 	-d `
@@ -16,13 +16,13 @@ docker run --name myteamcity `
     # -e SERVER_URL=http://myteamcity:8111/ `
 	# -e DOCKER_IN_DOCKER=start `
 	# -u 0 `
-    # -v d:/teamcity/agent1:/data/teamcity_agent/conf `
+    # -v c:/Workspace/teamcity/agent1:/data/teamcity_agent/conf `
 	# -v /var/run/docker.sock:/var/run/docker.sock `
-    # -v d:/teamcity/data/work:/opt/buildagent/work `
-    # -v d:/teamcity/data/temp:/opt/buildagent/temp `
-    # -v d:/teamcity/data/tools:/opt/buildagent/tools `
-    # -v d:/teamcity/data/plugins:/opt/buildagent/plugins `
-    # -v d:/teamcity/data/system:/opt/buildagent/system `
+    # -v c:/Workspace/teamcity/data/work:/opt/buildagent/work `
+    # -v c:/Workspace/teamcity/data/temp:/opt/buildagent/temp `
+    # -v c:/Workspace/teamcity/data/tools:/opt/buildagent/tools `
+    # -v c:/Workspace/teamcity/data/plugins:/opt/buildagent/plugins `
+    # -v c:/Workspace/teamcity/data/system:/opt/buildagent/system `
 	# --network myteamcity-network `
 	# -d `
     # jetbrains/teamcity-agent
@@ -30,7 +30,7 @@ docker run --name myteamcity `
 # option 2 - Docker host inside the container
 docker run --name myteamcity-agent1 `
     -e SERVER_URL=http://myteamcity:8111/ `
-	-v d:/teamcity/agent1:/data/teamcity_agent/conf `
+	-v c:/Workspace/teamcity/agent1:/data/teamcity_agent/conf `
 	-v myteamcity-agentvolume1:/var/lib/docker `
     --privileged -e DOCKER_IN_DOCKER=start `
 	--network myteamcity-network `

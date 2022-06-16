@@ -1,0 +1,18 @@
+version: '3.4'
+
+networks:
+  northwindstore-dev:
+    name: northwindstore-dev
+
+services:
+  northwindstore.app:
+    environment:
+    - ASPNETCORE_ENVIRONMENT=Development
+    - ConnectionStrings__DB=Data Source=tcp:northwindstore.db,1433; Initial Catalog=Northwind; User ID=sa; Password=DevPass_1
+    ports:
+    - "80"
+    networks:
+    - northwindstore-dev
+  northwindstore.db:
+    networks:
+    - northwindstore-dev
